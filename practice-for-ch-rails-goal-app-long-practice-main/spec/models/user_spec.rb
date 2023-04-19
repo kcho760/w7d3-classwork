@@ -10,18 +10,20 @@
 #
 require 'rails_helper'
 
+
 RSpec.describe User, type: :model do
-    let(:incomplete_user) {User.new(username:'', password: 'password')}
+    # let(:incomplete_user) {User.new(username:'', password: 'password')}
+    let(:test_user) {FactoryBot.build(:user, username: "harry_potter")}
     
     it {should validate_presence_of(:username)}
     it {should validate_presence_of(:password_digest)}
     it {should validate_length_of(:password).is_at_least(6)}
 
     describe "::find_by_credentials" do
-        before {user.save!}
+        before {test_user.save!}
 
         it "returns the user with the given username and password if they exist" do
-            expect(User.find_by_credentials("merve@gmail.com", "password")).to eq(user)
+            expect(User.find_by_credentials("harry_potter", "password")).to eq(test_user)
         end
         
         it "returns nil if the username and password do not match any user" do
