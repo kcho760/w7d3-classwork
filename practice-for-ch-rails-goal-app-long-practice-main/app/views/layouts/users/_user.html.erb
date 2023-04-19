@@ -1,0 +1,11 @@
+<ul>
+  <li><%= user.username %></li>
+
+  <% if type == :show %>
+    <%# debugger %>
+    <li><a href="<%= users_url %>">Users Index</a></li>
+  <% else %>
+
+    <li><a href="<%= user_url(user) %>"><%= user.username %>'s Show Page</a></li>
+  <% end %>
+</ul>

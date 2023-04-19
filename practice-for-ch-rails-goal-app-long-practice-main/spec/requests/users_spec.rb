@@ -27,18 +27,18 @@ RSpec.describe "Users", type: :request do
 
     context "with valid params" do
       it "creates the user" do
-        post :create params: valid_params
+        post :create, params: valid_params
         expect(User.last.username.to eq("merve"))
       end
       it "redirects to user show page" do
-        post :create params: valid_params
+        post :create, params: valid_params
         expect(response).to redirect_to(user_url(User.last.id))
       end
     end
 
     context "with invalid params" do
       before :each do
-          post :create params: valid_params
+          post :create, params: valid_params
       end
 
       it "renders new template" do
