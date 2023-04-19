@@ -13,11 +13,11 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
     # let(:incomplete_user) {User.new(username:'', password: 'password')}
-    let(:test_user) {FactoryBot.build(:user, username: "harry_potter")}
+    let(:test_user) {FactoryBot.build(:test_user, username: "harry_potter")}
     
-    it {should validate_presence_of(:username)}
-    it {should validate_presence_of(:password_digest)}
-    it {should validate_length_of(:password).is_at_least(6)}
+    it { should validate_presence_of(:username) }
+    it { should validate_presence_of(:password_digest) }
+    it { should validate_length_of(:password).is_at_least(6) }
 
     describe "::find_by_credentials" do
         before {test_user.save!}
